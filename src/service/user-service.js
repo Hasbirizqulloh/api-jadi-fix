@@ -152,6 +152,15 @@ const update = async (userId) => {
   });
 };
 
+const deleteUser = async (userId) => {
+  userId = validate(getUserIdValidation, userId);
+  return prismaClient.user.delete({
+    where: {
+      userId: userId,
+    },
+  });
+};
+
 const logout = async (userId) => {
   userId = validate(getUserIdValidation, userId);
 
