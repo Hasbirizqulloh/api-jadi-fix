@@ -66,6 +66,7 @@ const login = async (request) => {
     },
     select: {
       nama: true,
+      email: true,
       token: true,
       role: true,
     },
