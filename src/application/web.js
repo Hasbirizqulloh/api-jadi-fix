@@ -5,9 +5,9 @@ import { userRouter } from '../route/api.js';
 import cors from 'cors';
 
 export const web = express();
-web.use(express.json());
 
 web.use(cors());
+web.use(express.json());
 web.use(publicRouter);
 web.use(userRouter);
 
