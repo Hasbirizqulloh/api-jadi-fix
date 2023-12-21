@@ -113,34 +113,24 @@ const getUsersById = async (userId) => {
 };
 
 const update = async (userId) => {
-  const user = await prismaClient.user.findUnique({
-    where: {
-      userId: userId,
-    },
-  });
+  const user = validate(updateUserValidation, userId);
 
-  // If the user is not found, throw a 404 error
   if (!user) {
     throw new ResponseError(404, 'User not found');
   }
 
-  const validateUser = validate(updateUserValidation, userId);
-
-  // Validating and updating user data
-  const validatedUser = validate(updateUserValidation, user);
-
   const data = {};
-  if (validatedUser.nama) {
-    data.nama = validatedUser.nama;
+  if (user.nama) {
+    data.nama = user.nama;
   }
-  if (validatedUser.password) {
-    data.password = await bcrypt.hash(validatedUser.password, 10);
+  if (user.password) {
+    data.password = await bcrypt.hash(user.password, 10);
   }
-  if (validatedUser.email) {
-    data.email = validatedUser.email;
+  if (user.email) {
+    data.email = user.email;
   }
-  if (validatedUser.role) {
-    data.role = validatedUser.role;
+  if (user.role) {
+    data.role = user.role;
   }
 
   return prismaClient.user.update({
