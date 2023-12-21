@@ -60,6 +60,18 @@ const update = async (req, res, next) => {
   }
 };
 
+const deleteUser = async (req, res, next) => {
+  try {
+    const userId = req.params.userId;
+    await userService.deleteUser(userId);
+    res.status(200).json({
+      data: 'user berhasil dihapus',
+    });
+  } catch (e) {
+    next(e);
+  }
+};
+
 const logout = async (req, res, next) => {
   try {
     await userService.logout(req.user.userId);
@@ -78,4 +90,5 @@ export default {
   getUsersById,
   logout,
   getUsers,
+  deleteUser,
 };

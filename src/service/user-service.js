@@ -194,4 +194,5 @@ export default {
   getUsersById,
   logout,
   getUsers,
+  deleteUser,
 };
