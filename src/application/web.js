@@ -6,12 +6,13 @@ import cors from 'cors';
 
 export const web = express();
 
-const corsOptions = {
-  origin: 'https://pelma-uas-frontend.vercel.app',
-  credentials: true, // Izinkan kredensial
-};
+web.use(
+  cors({
+    origin: 'https://pelma-uas-frontend.vercel.app',
+    credentials: true,
+  })
+);
 
-web.use(cors(corsOptions));
 web.use(express.json());
 web.use(publicRouter);
 web.use(userRouter);
