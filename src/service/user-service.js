@@ -114,9 +114,6 @@ const getUsersById = async (userId) => {
 
 const update = async (userId) => {
   const user = validate(updateUserValidation, userId);
-  if (!user.userId) {
-    throw new ResponseError(404, 'User not found');
-  }
 
   return prismaClient.user.update({
     where: {
