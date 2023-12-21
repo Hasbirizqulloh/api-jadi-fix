@@ -57,7 +57,7 @@ const login = async (request) => {
   const token = uuid().toString();
   return prismaClient.user.update({
     data: {
-      name: user.name,
+      nama: user.nama,
       token: token,
       role: user.role,
     },
@@ -65,6 +65,7 @@ const login = async (request) => {
       email: user.email,
     },
     select: {
+      nama: true,
       email: true,
       token: true,
       role: true,
