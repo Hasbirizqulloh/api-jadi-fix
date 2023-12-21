@@ -47,7 +47,7 @@ const getUsersById = async (req, res, next) => {
 
 const update = async (req, res, next) => {
   try {
-    const userId = req.user.userId;
+    const userId = req.params.userId;
     const request = req.body;
     request.userId = userId;
 
