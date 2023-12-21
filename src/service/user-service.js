@@ -115,16 +115,6 @@ const getUsersById = async (userId) => {
 const update = async (userId) => {
   const user = validate(updateUserValidation, userId);
 
-  const totalUserInDatabase = await prismaClient.user.count({
-    where: {
-      userId: user.userId,
-    },
-  });
-
-  if (totalUserInDatabase !== 1) {
-    throw new ResponseError(404, 'user is not found');
-  }
-
   const data = {};
   if (user.nama) {
     data.nama = user.nama;
