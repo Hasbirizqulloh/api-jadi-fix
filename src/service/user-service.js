@@ -119,25 +119,30 @@ const update = async (userId) => {
     throw new ResponseError(404, 'User not found');
   }
 
-  const data = {};
-  if (user.nama) {
-    data.nama = user.nama;
-  }
-  if (user.password) {
-    data.password = await bcrypt.hash(user.password, 10);
-  }
-  if (user.email) {
-    data.email = user.email;
-  }
-  if (user.role) {
-    data.role = user.role;
-  }
+  // const data = {};
+  // if (user.nama) {
+  //   data.nama = user.nama;
+  // }
+  // if (user.password) {
+  //   data.password = await bcrypt.hash(user.password, 10);
+  // }
+  // if (user.email) {
+  //   data.email = user.email;
+  // }
+  // if (user.role) {
+  //   data.role = user.role;
+  // }
 
   return prismaClient.user.update({
     where: {
       userId: user.userId,
     },
-    data: data,
+    data: {
+      email: user.email,
+      password: user.password,
+      nama: user.nama,
+      role: user.role,
+    },
     select: {
       nama: true,
       email: true,
