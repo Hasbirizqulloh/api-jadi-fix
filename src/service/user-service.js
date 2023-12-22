@@ -121,7 +121,6 @@ const getUsersById = async (userId) => {
       userId: userId,
     },
     select: {
-      userId: true,
       email: true,
       nama: true,
       role: true,
