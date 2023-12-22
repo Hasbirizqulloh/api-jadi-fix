@@ -105,6 +105,12 @@ const getMe = async (userId) => {
       role: true,
     },
   });
+
+  if (!user) {
+    throw new ResponseError(404, 'User not found');
+  }
+
+  return user;
 };
 
 const getUsersById = async (userId) => {
