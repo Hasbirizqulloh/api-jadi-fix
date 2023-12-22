@@ -92,6 +92,8 @@ const getUsers = async () => {
 };
 
 const getMe = async (userId) => {
+  userId = validate(getUserIdValidation, userId);
+
   const user = await prismaClient.user.findUnique({
     where: {
       userId: userId,
