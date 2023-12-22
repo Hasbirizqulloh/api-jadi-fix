@@ -103,6 +103,7 @@ const getMe = async (userId) => {
       email: true,
       nama: true,
       role: true,
+      token: true,
     },
   });
 
