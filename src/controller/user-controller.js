@@ -45,6 +45,18 @@ const getUsersById = async (req, res, next) => {
   }
 };
 
+const getMe = async (req, res, next) => {
+  try {
+    const userId = req.user.userId;
+    const user = await userService.getMe(userId);
+    res.status(200).json({
+      data: user,
+    });
+  } catch (e) {
+    next(e);
+  }
+};
+
 const update = async (req, res, next) => {
   try {
     const userId = req.params.userId;
@@ -91,4 +103,5 @@ export default {
   logout,
   getUsers,
   deleteUser,
+  getMe,
 };

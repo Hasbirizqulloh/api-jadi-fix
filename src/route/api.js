@@ -8,6 +8,7 @@ userRouter.use(authMiddleware);
 // User
 userRouter.get('/api/users', userController.getUsers);
 userRouter.get('/api/users/:userId', userController.getUsersById);
+userRouter.get('/api/users/me', userController.getMe);
 userRouter.patch('/api/users/:userId', userController.update);
 userRouter.delete('/api/users/logout', userController.logout);
 userRouter.delete('/api/users/:userId', userController.deleteUser);

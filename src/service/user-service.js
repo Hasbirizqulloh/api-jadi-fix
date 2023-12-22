@@ -91,6 +91,22 @@ const getUsers = async () => {
   return allUsers;
 };
 
+const getMe = async (userId) => {
+  userId = validate(getUserValidation, userId);
+
+  const user = await prismaClient.user.findUnique({
+    where: {
+      userId: userId,
+    },
+    select: {
+      userId: true,
+      email: true,
+      nama: true,
+      role: true,
+    },
+  });
+};
+
 const getUsersById = async (userId) => {
   userId = validate(getUserIdValidation, userId);
 
@@ -176,4 +192,5 @@ export default {
   logout,
   getUsers,
   deleteUser,
+  getMe,
 };
