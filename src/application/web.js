@@ -8,7 +8,7 @@ export const web = express();
 
 web.use(
   cors({
-    origin: ['https://pelma-uas-frontend.vercel.app', 'https://localhost:5173'],
+    origin: ['https://pelma-uas-frontend.vercel.app', 'http://localhost:5173'],
     credentials: true,
   })
 );
