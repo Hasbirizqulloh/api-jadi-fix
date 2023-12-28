@@ -46,7 +46,7 @@ const getReportById = async (req, res, next) => {
 
 const deleteReport = async (req, res, next) => {
   try {
-    const result = await reportService.deleteReport(req.user, req.params.reportId);
+    const result = await reportService.deleteReport(req.params.reportId);
     res.status(200).json({
       data: result,
     });
