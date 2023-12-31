@@ -13,7 +13,7 @@ const createReport = async (req, res, next) => {
 
 const updateReport = async (req, res, next) => {
   try {
-    const reportId = req.params.id;
+    const reportId = req.params.reportId;
     const request = req.body;
     request.id = reportId;
     const result = await reportService.updateReport(request);
