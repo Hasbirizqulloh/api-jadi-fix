@@ -137,7 +137,6 @@ const getUsersById = async (userId) => {
 
 const update = async (userId) => {
   const user = validate(updateUserValidation, userId);
-
   return prismaClient.user.update({
     where: {
       userId: user.userId,
