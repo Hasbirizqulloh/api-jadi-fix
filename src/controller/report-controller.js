@@ -13,7 +13,10 @@ const createReport = async (req, res, next) => {
 
 const updateReport = async (req, res, next) => {
   try {
-    const result = await reportService.updateReport(req.user, req.body);
+    const reportId = req.params.id;
+    const request = req.body;
+    request.id = reportId;
+    const result = await reportService.updateReport(request);
     res.status(200).json({
       data: result,
     });
