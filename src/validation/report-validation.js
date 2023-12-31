@@ -5,6 +5,7 @@ const createReportValidation = Joi.object({
 });
 
 const updateReportValidation = Joi.object({
+  id: Joi.number().required(),
   status: Joi.string().max(100).optional(),
 });
 

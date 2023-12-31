@@ -26,14 +26,14 @@ const createReport = async (user, request) => {
   });
 };
 
-const updateReport = async (id) => {
-  const report = validate(updateReportValidation, id);
+const updateReport = async (reportId) => {
+  reportId = validate(updateReportValidation, reportId);
   return prismaClient.report.update({
     where: {
-      id: id,
+      id: reportId.id,
     },
     data: {
-      status: report.status,
+      status: reportId.status,
     },
     select: {
       id: true,
